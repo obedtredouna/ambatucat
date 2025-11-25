@@ -16,7 +16,7 @@ define k = Character("Kucing Asing", color="#B2BABB")
 
 
 label start:
-    jump prolog
+    jump ending_test
 
 
 # === SCENE 1 : PROLOG ===
@@ -240,4 +240,51 @@ label episode_2:
     scene black with fade
     pause 0.5
 
+    return
+
+# === STUDI KASUS: Input + Kondisional ===
+label ending_test:
+
+    # Ask the player for a choice using renpy.input
+    $ pilihan = renpy.input("Amba melihat dua jalan. Ke mana ia harus pergi?\n(ketik: rumah / gang)")
+    $ pilihan = pilihan.strip().lower()
+
+    # Simple confirmation line
+    "Kau memilih: [pilihan]."
+
+    # Conditional flow
+    if pilihan == "rumah":
+        jump ending_baik
+    elif pilihan == "gang":
+        jump ending_buruk
+    else:
+        "Amba bingung dengan pilihan itu..."
+        jump ending_test
+
+
+label ending_baik:
+    scene bg room with fade
+    play bgm "audio/warm_theme.ogg" loop
+
+    show amba cheer at center
+    "Amba memilih kembali ke rumah, tempat yang hangat dan aman."
+
+    o "Kau kembali? Anak pintar."
+    "Amba tidur dengan damai malam itu."
+
+    "== GOOD ENDING =="
+    return
+
+
+label ending_buruk:
+    scene bg alley with fade
+    play bgm "audio/backsound/sad/Sadness/Sadness.wav" loop
+
+    show amba dirty_sad at center
+    "Amba kembali ke gang sempit yang gelap..."
+
+    "Hujan turun. Tidak ada makanan. Tidak ada kehangatan."
+    a "Harusnya aku tidak kembali ke sini..."
+
+    "== BAD ENDING =="
     return

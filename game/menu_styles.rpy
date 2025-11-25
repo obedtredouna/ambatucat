@@ -1,7 +1,7 @@
 # menu_styles.rpy - Clean Ren'Py compatible styles
 
 style menu_panel:
-    background "#1B1F28"     # panel warna gelap
+    background "#1B1F28"
     xpadding 22
     ypadding 18
     xminimum 320
@@ -15,7 +15,7 @@ style menu_button:
     xpadding 18
     ypadding 10
     hover_background "#FFFFFF20"
-    hover_color "#FFF1D6"       # correct Ren'Py property
+    hover_color "#FFF1D6"
     insensitive_color "#777777"
 
 style footer_text:
@@ -33,3 +33,39 @@ style credits_box:
     xpadding 28
     ypadding 24
     xmaximum 640
+
+style modern_say_window:
+    background "#12161AC0"
+    xpadding 18
+    ypadding 14
+    xmaximum 1200
+    xminimum 640
+    yminimum 110
+
+style modern_name:
+    size 22
+    bold True
+    color "#FFDFAE"
+    xalign 0.0
+
+style modern_say_text_window:
+    background None
+    xpadding 0
+    ypadding 0
+
+style modern_say_text:
+    size 24
+    color "#FFFFFF"
+    slow_cps 30
+
+style modern_choice_button:
+    font "DejaVuSans.ttf"
+    size 24
+    color "#FFFFFF"
+    background "#1B1F28"
+    xpadding 16
+    ypadding 10
+    xmargin 6        # FIXED: replace margin
+    ymargin 6        # FIXED: replace margin
+    hover_background "#FFFFFF20"
+    insensitive_color "#777777"

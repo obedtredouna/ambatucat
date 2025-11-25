@@ -1,22 +1,94 @@
-﻿# screens.rpy - Simple right-side control main menu (no custom images)
-screen main_menu():
+﻿# game/screens.rpy
+# Clean screens file for AmbatoCat - no 'margin' properties used
+# Compatible with Ren'Py 8.4+
 
-    # background: 
+init python:
+    import os
+    def has_saves():
+        try:
+            d = renpy.config.savedir
+            if not d:
+                return False
+            files = os.listdir(d)
+            return any(not f.startswith(".") for f in files)
+        except:
+            return False
+
+# Styles (explicit, safe)
+style menu_panel:
+    background "#1B1F28"
+    xpadding 20
+    ypadding 20
+
+style menu_button:
+    font "DejaVuSans.ttf"
+    size 28
+    color "#FFFFFF"
+    background None
+    xpadding 18
+    ypadding 10
+    hover_background "#FFFFFF20"
+    hover_color "#FFE5C4"
+    insensitive_color "#777777"
+
+style footer_text:
+    size 14
+    color "#A9ADB6"
+
+style footer_button:
+    size 14
+    color "#A9ADB6"
+    background None
+    hover_color "#FFFFFF"
+
+style credits_box:
+    background "#000000C0"
+    xpadding 32
+    ypadding 32
+    xmaximum 640
+
+# SAY SCREEN STYLES
+style modern_say_window:
+    background "#12161ACC"
+    xpadding 20
+    ypadding 16
+    xminimum 620
+    xmaximum 1200
+
+style modern_name:
+    size 22
+    bold True
+    color "#FFDFAE"
+
+style modern_say_text:
+    size 24
+    color "#FFFFFF"
+
+# CHOICE BUTTON STYLE — NO margin
+style modern_choice_button:
+    font "DejaVuSans.ttf"
+    size 22
+    color "#FFFFFF"
+    background "#1B1F28"
+    xpadding 16
+    ypadding 10
+    hover_background "#FFFFFF20"
+    insensitive_color "#777777"
+
+# Main menu
+screen main_menu():
     add Solid("#111218")
 
-
-    # Title area (center-left)
     frame:
+        background None
         xalign 0.18
         yalign 0.30
-        background None
         has vbox
         spacing 8
 
-        text "AmbatoCat" size 56 color "#F8EBD7" xalign 0.0
-        text "A short demo" size 18 color "#C9C9C9" xalign 0.0
+        text "AmbatoCat" size 56 color "#F8EBD7"
+        text "A short demo" size 18 color "#C9C9C9"
 
-    # Right-side control panel (the main focus)
     frame:
         style "menu_panel"
         xalign 0.82
@@ -25,12 +97,12 @@ screen main_menu():
         spacing 14
 
         textbutton "Start" action Start() style "menu_button"
+        textbutton "Continue" action Continue() sensitive has_saves() style "menu_button"
         textbutton "Load" action ShowMenu("load") style "menu_button"
         textbutton "Preferences" action ShowMenu("preferences") style "menu_button"
         textbutton "Credits" action Show("credits") style "menu_button"
         textbutton "Quit" action Quit(confirm=True) style "menu_button"
 
-    # Footer small info (bottom-left)
     frame:
         background None
         xalign 0.02
@@ -38,22 +110,48 @@ screen main_menu():
         has hbox
         spacing 12
         text "AmbatoCat — Demo v0.1" style "footer_text"
-        textbutton "View script" action Function(renpy.exports.open_file, "sandbox:/mnt/data/AmbatoCat.docx") style "footer_button"
+        # Dev helper - optional; if it errors on your platform remove this line
+        textbutton "View script" action Function(renpy.exports.open_file, "/mnt/data/AmbatoCat.docx") style "footer_button"
 
-# Simple credits screen
+# Credits
 screen credits():
     tag menu
     modal True
-    zorder 50
 
     frame:
         style "credits_box"
         xalign 0.5
         yalign 0.5
         has vbox
-        spacing 8
+        spacing 12
 
         text "Credits" size 32
         text "Writer: Ped" size 18
         text "Demo UI: generated" size 14
         textbutton "Back" action Return() style "menu_button"
+
+# Say screen override (Ren'Py 8.x auto-uses the screen named 'say')
+screen say(who, what):
+
+    frame:
+        style "modern_say_window"
+        xalign 0.5
+        yalign 0.88
+        has vbox
+        spacing 6
+
+        if who:
+            text who id "who" style "modern_name"
+
+        text what id "what" style "modern_say_text"
+
+# Choice screen
+screen choice(items):
+    frame:
+        xalign 0.5
+        yalign 0.78
+        has vbox
+        spacing 8
+
+        for caption, action in items:
+            textbutton caption action action style "modern_choice_button"
