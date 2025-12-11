@@ -1,4 +1,4 @@
-define o = Character("owner", color="#ffcb8f")
+define majikan = Character("owner", color="#87CEEB", image="owner")
 
 # Image definitions
 image owner smile = "images/owner/owner_smile.png"
