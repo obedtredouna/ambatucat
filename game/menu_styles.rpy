@@ -1,7 +1,7 @@
 # menu_styles.rpy - Clean Ren'Py compatible styles
 
 style menu_panel:
-    background "#1B1F28"
+    background "#12161AC0"
     xpadding 22
     ypadding 18
     xminimum 320
@@ -69,3 +69,4 @@ style modern_choice_button:
     ymargin 6        # FIXED: replace margin
     hover_background "#FFFFFF20"
     insensitive_color "#777777"
+

@@ -16,7 +16,7 @@ define k = Character("Kucing Asing", color="#B2BABB")
 
 
 label start:
-    jump ending_test
+    jump prolog
 
 
 # === SCENE 1 : PROLOG ===
