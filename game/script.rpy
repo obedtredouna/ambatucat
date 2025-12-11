@@ -17,6 +17,7 @@ image bg rooftop warm = "images/background/bg_rooftop_warm.png"
 image bg room day = "images/background/bg_warm_room 2.png"
 image bg under bed = "images/background/bg_warm_room 3.png"
 image bg room warm = "images/background/bg_warm_room.png"
+image bg ending = "images/background/Ending_Sequence.png"
 image bg black = Solid("#000000")
 
 # Variabel untuk tracking status
@@ -614,9 +615,10 @@ label episode5:
     "Ia akan selamanya menjadi AmbatoCat—sebagian Amba yang waspada, sebagian Toba yang berharga, yang kini ia bawa dalam kenangan dan loncengnya yang sunyi."
     
     window hide
-    stop music fadeout 2.0
+    scene bg ending with fade
+    
     pause 2.0
-    
+
     centered "{b}TAMAT{/b}\n\nTerima kasih telah memainkan AmbatoCat."
-    
+    stop music fadeout 5.0
     return
