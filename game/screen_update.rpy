@@ -83,6 +83,5 @@ screen choice(items):
         has vbox
         spacing 8
 
-        for caption, action in items:
-            textbutton caption action action style "modern_choice_button"
-
+        for i in items:
+            textbutton i.caption action i.action style "modern_choice_button"
