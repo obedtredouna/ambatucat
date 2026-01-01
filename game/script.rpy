@@ -77,8 +77,8 @@ init python:
 # ==============================================================================
 
 label start:
-    stop music fadeout 1.0
     scene bg alley dark with fade
+    play music "audio/Sound effect and backsound ambatucat/sad backsound/Sadness/Sadness.wav" fadein 1.0 loop
     
     # Narasi Lingkungan [Source: 5-7]
     "Gang sempit dan gelap di tengah kota. Suara deru kendaraan dari kejauhan."
@@ -108,7 +108,8 @@ label start:
     ab "Padahal aku hanya ingin mencari makanan sisa. Kenapa selalu begini?"
 
     # Scene Hujan [Source: 13-16]
-    play music "audio/rain_sad.ogg" fadein 2.0
+    stop music fadeout 1.0
+    play music "audio/Sound effect and backsound ambatucat/rain sound effect/Rain.wav" fadein 2.0 loop
 
     "Gang sempit. Hujan deras. Amba meringkuk kedinginan di dalam sebuah kotak kardus yang sudah basah."
     "Suara tetesan air dan angin kencang membuat suasana semakin suram."
@@ -130,6 +131,12 @@ label start:
     "Elusan itu terasa... nyaman."
     "Pria itu menggendong Amba dengan hati-hati dan membawanya masuk ke dalam rumah. Rumah itu hangat dan terang. Bau makanan dan sabun tercium di mana-mana."
 
+    stop music fadeout 1.0
+
+    scene bg room day with fade
+    play music "audio/Sound effect and backsound ambatucat/happy backsound/loops/almost-time-for-christmas_loop-03.wav" fadein 1.0 loop
+
+    show amba dirty_neutral at left with dissolve
     ab "Tempat apa ini? Kenapa terasa hangat sekali di sini?"
 
     show owner smile at right with dissolve
@@ -156,6 +163,8 @@ label prologue_accept:
 
 label prologue_reject:
     # [Source: 33-43]
+    stop music fadeout 1.0
+
     "Amba tiba-tiba melompat dari gendongan Majikan, panik dan bingung. Insting liar jalanannya muncul."
     "Dia berlari kencang keluar pintu yang sedikit terbuka."
 
@@ -163,6 +172,7 @@ label prologue_reject:
 
     hide owner with moveoutright
     scene bg alley rain with fade
+    play music "audio/Sound effect and backsound ambatucat/sad backsound 2/Sad Piano - Blue X Music/WAV/Sad Piano (Looping Version).wav" fadein 1.0 loop
     show amba dirty_sad at center with dissolve
 
     ab "Tidak! Aku harus bebas! Aku tidak bisa terikat! Aku harus kembali ke jalanan."
@@ -181,6 +191,7 @@ label prologue_reject:
 
     "Amba menghembuskan napas terakhirnya, sendirian di kegelapan."
     "{b}TAMAT – JALUR TRAGIS{/b}"
+    stop music fadeout 2.0
     return
 
 # ==============================================================================
@@ -189,7 +200,7 @@ label prologue_reject:
 
 label episode1:
     scene bg room day with fade
-    play music "audio/warm_melody.ogg" fadein 1.0
+    play music "audio/Sound effect and backsound ambatucat/happy backsound/loops/almost-time-for-christmas_loop-05.wav" fadein 1.0 loop
 
     # [Source: 49-56]
     "Amba selesai dimandikan. Bulunya yang hitam kini bersih dan mengkilap. PEMILIK memasang kalung sederhana bertuliskan 'Amba'."
@@ -299,8 +310,9 @@ label ep1_accept:
 # ==============================================================================
 
 label episode2:
+    stop music fadeout 1.0
     scene bg room day with fade
-    play music "audio/tense_rain.ogg" fadein 1.0
+    play music "audio/Sound effect and backsound ambatucat/rain sound effect/Rain.wav" fadein 2.0 loop
     show amba cheer at left with dissolve
 
     # [Source: 109-111]
@@ -347,8 +359,13 @@ label episode2:
     toba "(Sambil bersandar pada Amba) Terima kasih. Aku kedinginan sekali. Aku pikir aku akan mati di sana."
     ab "Aku tidak sendirian lagi."
 
+    stop music fadeout 1.0
+
     hide amba with dissolve
     hide toba with dissolve
+
+    play music "audio/Sound effect and backsound ambatucat/happy backsound/loops/almost-time-for-christmas_loop-01.wav" fadein 1.0 loop
+
     # [Source: 127-133]
     "Beberapa minggu berlalu. Toba dan Amba adalah teman yang tak terpisahkan. Namun, Toba adalah kucing yang lebih liar."
     
@@ -435,7 +452,7 @@ label ep2_true_route:
 
 label episode3:
     scene bg under bed with fade
-    play music "audio/playful.ogg" fadein 1.0
+    play music "audio/Sound effect and backsound ambatucat/happy backsound/loops/almost-time-for-christmas_loop-03.wav" fadein 1.0 loop
 
     # [Source: 164-168]
     "Beberapa minggu berlalu. Amba dan Toba tak terpisahkan. Mereka bermain kejar-kejaran, belajar menggunakan kotak pasir, dan saling membersihkan."
@@ -490,7 +507,7 @@ label episode4:
     stop music fadeout 0.5
     scene bg room day
     show amba cheer at left
-    play music "audio/danger_fast.ogg"
+    play music "audio/Sound effect and backsound ambatucat/sad backsound/Sadness/Sadness.wav" fadein 1.0 loop
 
     # [Source: 184-191]
     "Pagi hari yang sibuk. Pemilik sedang bersiap-siap. Pintu depan terbuka sedikit karena Pemilik membawa barang keluar."
@@ -524,7 +541,10 @@ label episode4:
             
 label ep4_tragic_attempt:
     # [Source: 196-208]
+    
+    play music "audio/Sound effect and backsound ambatucat/sad backsound 2/Sad Piano - Blue X Music/WAV/Sad Piano (Looping Version).wav" fadein 1.0 loop
     scene bg road dark with dissolve
+
     "Amba berlari kencang, mengejar Toba. Lonceng peraknya berbunyi tergesa-gesa."
 
     show toba walk at right
@@ -564,6 +584,9 @@ label ep4_tragic_attempt:
 
 label ep4_betrayal:
     # [Source: 210-220]
+
+    play music "audio/Sound effect and backsound ambatucat/sad backsound 2/Sad Piano - Blue X Music/WAV/Sad Piano (Looping Version).wav" fadein 1.0 loop
+
     "Amba berhenti mendadak di ambang pintu. Ia menatap Toba yang berlari ke aspal, lalu menatap kembali kehangatan rumah. Ia memilih keamanan."
     show amba sad at left
     
@@ -600,8 +623,9 @@ label ep4_betrayal:
 # ==============================================================================
 
 label episode5:
+    stop music fadeout 2.0
     scene bg rooftop warm with fade
-    play music "audio/Sound effect and backsound ambatucat/Ending Song/Hindia - kids.mp3" volume 0.1 fadein 2.0
+    play music "audio/Sound effect and backsound ambatucat/Ending Song/Hindia - kids.mp3" volume 0.5 fadein 2.0
 
     # [Source: 224-235]
     "Rumah yang terasa sangat besar dan sepi."
