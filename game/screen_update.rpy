@@ -53,8 +53,6 @@ screen main_menu():
         has hbox
         spacing 12
         text "AmbatoCat — Demo v0.1" style "footer_text"
-        # Dev helper - optional; if it errors on your platform remove this line
-        textbutton "View script" action Function(renpy.exports.open_file, "/mnt/data/AmbatoCat.docx") style "footer_button"
 
 # Credits
 screen credits():

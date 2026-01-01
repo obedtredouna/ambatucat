@@ -41,6 +41,9 @@ define gui.about = _p("""
 
 define build.name = "ambatucat"
 
+## Determines whether disabled menu items are shown in the game menu.
+define config.menu_include_disabled = True
+
 
 ## Sounds and music ############################################################
 
