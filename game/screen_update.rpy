@@ -65,13 +65,30 @@ screen credits():
         style "credits_box"
         xalign 0.5
         yalign 0.5
-        has vbox
-        spacing 12
 
-        text "Credits" size 32
-        text "Writer: Ped" size 18
-        text "Demo UI: generated" size 14
-        textbutton "Back" action Return() style "menu_button"
+        vbox:
+            spacing 14
+            xalign 0.5
+
+            text "CREDITS" size 32 xalign 0.5
+
+            null height 10
+
+            text "Core Team" size 20 xalign 0.5
+
+            text "Muhammad Fatham Mahabbah Haqiqi" size 16 xalign 0.5
+            text "(7708223127)" size 13 xalign 0.5
+
+            text "Syarif Ruhul Mujadid" size 16 xalign 0.5
+            text "(7708220038)" size 13 xalign 0.5
+
+            text "Obed Bari Tredouna" size 16 xalign 0.5
+            text "(707082330166)" size 13 xalign 0.5
+
+            null height 20
+
+            textbutton "Back" action Hide("credits") style "menu_button" xalign 0.5
+
 
 
 
