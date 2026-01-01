@@ -1,9 +1,26 @@
 ﻿# ==============================================================================
-# DEFINISI KARAKTER & VARIABEL (JANGAN DIUBAH)
+# SPLASH SCREEN CONFIGURATION
+# ==============================================================================
+
+label splashscreen:
+    $ renpy.pause(0.5, hard=True)
+
+    # Play Video Splash 1
+    $ renpy.movie_cutscene("videos/splash_1.webm")
+
+    # Play Video Splash 2
+    $ renpy.movie_cutscene("videos/splash_2.webm")
+
+    $ renpy.pause(0.5, hard=True)
+
+    return
+
+# ==============================================================================
+# DEFINISI KARAKTER & VARIABEL
 # ==============================================================================
 
 # --- Definisi Karakter Tambahan ---
-define narator = Character(None, kind=nvl) # Narasi tanpa nama (opsional mode NVL)
+define narator = Character(None, kind=nvl) # Narasi
 
 # --- Definisi Gambar ---
 image bg alley dark = "images/background/bg_alley_dark.png"
@@ -254,10 +271,10 @@ label ep1_sleep:
     amba "(Bergumam pelan) Aku tidak bisa percaya ini nyata. Aku harus waspada... tapi..."
 
     menu:
-        "...Tapi aku tidak boleh membiarkan ini melunakkanku.":
+        "Tapi aku tidak boleh membiarkan ini melunakkanku.":
             jump ep1_bad_end
 
-        "...Tapi kehangatan ini terasa terlalu berharga untuk dilepaskan.":
+        "Tapi kehangatan ini terasa terlalu berharga untuk dilepaskan.":
             jump ep1_accept
 
 label ep1_bad_end:
@@ -497,12 +514,14 @@ label episode4:
     "Di persimpangan janji dan bahaya, Amba harus memilih."
 
     menu:
-        "Mengejar Toba, berusaha menyelamatkannya.":
+        # Pilihan ini muncul jika naluri liar (Wild) lebih dominan atau seimbang
+        "Mengejar Toba, berusaha menyelamatkannya." if wild_stat >= trust_stat:
             jump ep4_tragic_attempt
 
-        "Memilih untuk tetap di dalam, mengamankan diri.":
+        # Pilihan ini muncul jika kepercayaan pada majikan (Trust) lebih dominan
+        "Memilih untuk tetap di dalam, mengamankan diri." if trust_stat > wild_stat:
             jump ep4_betrayal
-
+            
 label ep4_tragic_attempt:
     # [Source: 196-208]
     scene bg road dark with dissolve
@@ -560,7 +579,7 @@ label ep4_betrayal:
     "Pemilik berlari keluar. Amba meringkuk ketakutan di bawah sofa. Pemilik kembali dengan wajah sedih, memeluk Amba."
 
     show amba sad at left with dissolve
-    show owner at right with moveinright
+    show owner sad at right with moveinright
     majikan "(Penuh duka) Oh, Amba... Toba..."
     
     hide amba with dissolve
